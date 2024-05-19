@@ -132,11 +132,11 @@ INSERT INTO usd.usd_value
 VALUES('2024-05-26', 8.0);
 
 INSERT INTO usd.user_emails
-(id, email, subscribe)
-VALUES(1, 'test', true);
+(email, subscribe)
+VALUES('test', true);
 INSERT INTO usd.user_emails
-(id, email, subscribe)
-VALUES(2, 'test2@mail.com', true);
+(email, subscribe)
+VALUES('test2@mail.com', true);
 INSERT INTO usd.user_emails
-(id, email, subscribe)
-VALUES(3, 'test3@mail.com', true);
+(email, subscribe)
+VALUES('test3@mail.com', true);

@@ -33,7 +33,7 @@ class UsdApiController extends BasicApiController
             $db_result = ( new Usd )->addUser($email);
             if( $db_result !== 'error_database' )
             {
-                $this->response_data        = $db_result;
+                $this->response_data        = 'E-mail додано';
             }
             else
             {

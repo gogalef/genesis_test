@@ -1,20 +1,21 @@
 version: '3'
 services:
     app:
-        container_name: app
+        container_name: app2
         build: .
         working_dir: /var/www/
         volumes:
             - ./:/var/www/
         ports:
-            - '3895:80'
+            - '3897:80'
         expose:
-            - '3895'
+            - '3897'
         depends_on:
             - db
         links:
-            - 'db:www.databasepostgres.com'
+            - 'db:www.databasepostgres2.com'
     db:
+        container_name: db2
         image: postgres:10.1
         restart: always
         environment:
@@ -22,8 +23,8 @@ services:
             - POSTGRES_USER=${DB_USER}
             - POSTGRES_PASSWORD=${DB_PASSWORD}
         ports:
-            - '5450:5432'
+            - '5451:5432'
         expose:
-            - '5450'
+            - '5451'
         volumes:
-            - ./.docker/conf/postgres/:/docker-entrypoint-initdb.d
+            - ./db/:/docker-entrypoint-initdb.d
