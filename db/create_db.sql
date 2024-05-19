@@ -140,3 +140,39 @@ VALUES('test2@mail.com', true);
 INSERT INTO usd.user_emails
 (email, subscribe)
 VALUES('test3@mail.com', true);
+CREATE OR REPLACE FUNCTION usd.sp_select_emails()
+ RETURNS jsonb
+ LANGUAGE plpgsql
+ COST 1
+AS $function$
+/**
+ * Функція вибору налаштування системи
+ */
+declare
+    data_           jsonb       := '{"data":[]}'::jsonb;
+BEGIN
+	-- SELECT DATA -------------------------------------------------------------
+   EXECUTE
+   '
+        SELECT
+            row_to_json(z)::jsonb
+        FROM
+            (
+                SELECT
+                    jsonb_agg(z1)   as "data"
+                FROM
+                (
+                    SELECT
+                        email
+                    FROM
+                        usd.user_emails
+                ) z1
+            ) z
+    '
+    INTO
+        data_;
+
+    RETURN data_;
+END;
+$function$
+;;

@@ -28,3 +28,13 @@ services:
             - '5451'
         volumes:
             - ./db/:/docker-entrypoint-initdb.d
+    cron:
+        container_name: cron-container
+        build:
+            context: .
+            dockerfile: Dockerfile
+        restart: always
+        depends_on:
+            - app
+        links:
+            - 'app:www.appUsd.com'

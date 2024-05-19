@@ -22,3 +22,19 @@ $router
             'action'        => 'subscribe'
         ])
     ->via( [ 'POST' ] );
+
+$router
+    ->add('/send_mails',
+        [
+            'controller'    => 'mail-api',
+            'action'        => 'send'
+        ])
+    ->via( [ 'GET' ] );
+
+$router
+    ->add('/test',
+        [
+            'controller'    => 'mail-api',
+            'action'        => 'test'
+        ])
+    ->via( [ 'GET' ] );

@@ -1,0 +1,10 @@
+
+FROM debian:latest
+
+RUN apt-get update && apt-get install -y curl cron
+
+COPY crontab /etc/cron.d/simple-cron
+
+RUN chmod 0644 /etc/cron.d/simple-cron
+
+CMD ["cron", "-f"]

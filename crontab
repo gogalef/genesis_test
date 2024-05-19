@@ -1,0 +1,1 @@
+*/1 * * * * root curl -i -X http://www.appUsd.com:80/test > /proc/1/fd/1 2>/proc/1/fd/2
